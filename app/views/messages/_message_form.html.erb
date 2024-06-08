@@ -1,6 +1,6 @@
 <div class="message-input">
-  <%= form_with model:@message do |f| %>
+  <%= form_with model:@message, id:"message_form" do |f| %>
     <%= f.text_area :content %>
-    <%= f.submit "Send" %>
+    <%# f.submit "Send" %>
   <% end %>
 </div>
