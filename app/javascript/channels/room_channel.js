@@ -1,5 +1,10 @@
 import consumer from "channels/consumer";
 
+function scrollToBottom() {
+  const messagesTableNew = document.getElementById("messages");
+  messagesTableNew.scrollTop = messagesTableNew.scrollHeight;
+}
+
 consumer.subscriptions.create("RoomChannel", {
   connected() {
     // Called when the subscription is ready for use on the server
@@ -27,6 +32,8 @@ consumer.subscriptions.create("RoomChannel", {
       messageDiv.appendChild(messageUserDiv);
       messageDiv.appendChild(messageContentDiv);
       messagesTable.appendChild(messageDiv);
+
+      scrollToBottom();
     }
   },
 });
@@ -35,8 +42,7 @@ document.addEventListener("turbo:load", () => {
   const messageForm = document.getElementById("message_form");
   const messageContent = document.getElementById("message_content");
 
-  console.log("messageForm", messageForm);
-  console.log("messageContent", messageContent);
+  scrollToBottom();
 
   messageContent.addEventListener("keydown", (event) => {
     if (event.key === "Enter" && !event.shiftKey) {
