@@ -16,22 +16,28 @@ consumer.subscriptions.create("RoomChannel", {
 
   received(data) {
     // Called when there's incoming data on the websocket for this channel
-    if (data.content) {
+    if (data.message) {
+      console.log(data.message);
       const messagesTable = document.getElementById("messages-table");
-      const messageDiv = document.createElement("div");
-      messageDiv.className = "message";
+      // const messageDiv = document.createElement("div");
+      // messageDiv.className = "message";
+      // messageDiv.innerHTML = data.message;
+      // const messageDiv = document.createElement("div");
+      // messageDiv.className = "message";
 
-      const messageUserDiv = document.createElement("div");
-      messageUserDiv.className = "message-user";
-      messageUserDiv.textContent = data.username + ":";
+      // const messageUserDiv = document.createElement("div");
+      // messageUserDiv.className = "message-user";
+      // messageUserDiv.textContent = data.username + ":";
 
-      const messageContentDiv = document.createElement("div");
-      messageContentDiv.className = "message-content";
-      messageContentDiv.textContent = data.content;
+      // const messageContentDiv = document.createElement("div");
+      // messageContentDiv.className = "message-content";
+      // messageContentDiv.textContent = data.message;
 
-      messageDiv.appendChild(messageUserDiv);
-      messageDiv.appendChild(messageContentDiv);
-      messagesTable.appendChild(messageDiv);
+      // messageDiv.appendChild(messageUserDiv);
+      // messageDiv.appendChild(messageContentDiv);
+      // messagesTable.appendChild(messageDiv);
+
+      messagesTable.insertAdjacentHTML("beforeend", data.message);
 
       scrollToBottom();
     }
