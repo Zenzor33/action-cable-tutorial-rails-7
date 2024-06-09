@@ -2,9 +2,9 @@ module ApplicationCable
   class Connection < ActionCable::Connection::Base
     include SessionsHelper
 
-    identified_by :message_user
+    identified_by :message_user # Sets an identifier for the connection, which can be used by channels to recognize the user.
 
-    def connect
+    def connect #Called when a new connection is established.
       self.message_user = find_verified_user
     end
 
