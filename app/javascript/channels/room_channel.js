@@ -16,9 +16,10 @@ consumer.subscriptions.create("RoomChannel", {
 
   received(data) {
     // Called when there's incoming data on the websocket for this channel
+    console.log("data: ", data);
     console.log("data.mention: ", data.mention);
     if (data.mention) {
-      alert("You have a new mention");
+      alert("You have a new mention from " + data.sender);
     }
     if (data.message) {
       console.log(data.message);
