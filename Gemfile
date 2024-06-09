@@ -75,3 +75,5 @@ group :test do
 end
 
 gem 'pry-rails', :group => :development
+gem 'kramdown', '~> 2.4'
+gem 'kramdown-parser-gfm', '~> 1.1'
